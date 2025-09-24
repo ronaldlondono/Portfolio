@@ -106,6 +106,17 @@ export function HeroSection() {
               <Mail className="h-5 w-5" />
               Contactar
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2 bg-transparent"
+              onClick={() => {
+                window.open('LUIS RONALDO LONDOÑO GOMEZ AMERICANA.pdf', '_blank');
+              }}
+            >
+              <Briefcase className="h-5 w-5" />
+              Descargar CV
+            </Button>
           </div>
         </motion.div>
       </div>
