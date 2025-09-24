@@ -45,7 +45,7 @@ export function HeroSection() {
           <div className="relative h-full w-full rounded-full overflow-hidden border-2 md:border-4 border-primary/20 p-1.5 md:p-2">
             <div className="h-full w-full rounded-full overflow-hidden bg-muted">
               <Image
-                src="/LuisRonaldoLondonoGomez.png?height=600&width=600"
+                src="LuisRonaldoLondonoGomez.png?height=600&width=600"
                 alt="Luis Ronaldo Londoño Gomez"
                 width={600}
                 height={600}

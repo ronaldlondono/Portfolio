@@ -15,7 +15,7 @@ const projects = [
     id: 1,
     title: "Vipe POS",
     description: "Un sistema completo de punto de venta (POS) para restaurantes, diseñado para optimizar las operaciones diarias desde la toma de órdenes hasta la gestión administrativa. Esta aplicación web proporciona interfaces específicas para meseros, cocina, cajeros y administradores, con funcionalidades adaptadas a cada rol.",
-    image: "/vipe-pos.png?height=400&width=600",
+    image: "vipe-pos.png?height=400&width=600",
     tags: ["React", "TypeScript", "SupaBase", "Vercel", "Tailwind CSS", "Python"],
     category: "app",
     demo: "https://vipe-pos.vercel.app",
@@ -24,7 +24,7 @@ const projects = [
     id: 2,
     title: "PrintCost Pro",
     description: "Esta plataforma centraliza la gestión de clientes, ventas, impresiones 3D, inventario, finanzas y estadísticas en un solo sistema automatizado y visual",
-    image: "/presentacion.png",
+    image: "presentacion.png",
     tags: ["React", "C#", ".NET", "SQL Server", "Azure", "Tailwind CSS"],
     category: "app",
     demo: "http://printing-cost.vercel.app",
@@ -67,7 +67,7 @@ export function ProjectsSection() {
                   <Card className="overflow-hidden h-full flex flex-col group">
                     <div className="relative overflow-hidden h-48 md:h-56 lg:h-72">
                       <Image
-                        src={project.image || "/placeholder.svg"}
+                        src={project.image || "placeholder.svg"}
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
