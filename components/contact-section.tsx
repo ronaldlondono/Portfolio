@@ -76,6 +76,7 @@ export function ContactSection() {
                   <div className="flex justify-center space-x-4">
                     <SocialButton href="https://github.com/ronaldlondono" label="GitHub" />
                     <SocialButton href="https://www.linkedin.com/in/luis-ronaldo-londo%C3%B1o-g%C3%B3mez-53561a272/" label="LinkedIn" />
+                    <SocialButton href="https://wa.me/+573004807418" label="WhatsApp" />
                   </div>
                 </div>
               </CardContent>
