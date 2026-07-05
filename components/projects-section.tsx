@@ -28,6 +28,15 @@ const projects = [
     tags: ["React", "C#", ".NET", "SQL Server", "Azure", "Tailwind CSS"],
     category: "app",
     demo: "http://printing-cost.vercel.app",
+  },
+  {
+    id: 3,
+    title: "Magic Culture",
+    description: "Pagina web sobre la cultura de un municipio, con información sobre historia, tradiciones, eventos y noticias culturales. La página fue diseñado como un proyecto universitaria para representar la identidad cultural del municipio.",
+    image: "magicculture.png",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    category: "web",
+    demo: "https://pagina-cultura-mrbqfdwxt-ronaldlondonos-projects.vercel.app/",
   }
 ]
 

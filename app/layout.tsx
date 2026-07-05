@@ -9,7 +9,6 @@ export const metadata = {
   title: "Portfolio de Desarrollador Front-End",
   description:
     "Portfolio profesional de desarrollador front-end especializado en React, TypeScript y diseño de interfaces modernas.",
-    generator: 'v0.app'
 }
 
 export default function RootLayout({

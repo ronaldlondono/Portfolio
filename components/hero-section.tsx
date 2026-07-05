@@ -111,7 +111,7 @@ export function HeroSection() {
               variant="outline"
               className="gap-2 bg-transparent"
               onClick={() => {
-                window.open('LUIS RONALDO LONDOÑO GOMEZ AMERICANA.pdf', '_blank');
+                window.open('HojaDeVida_LuisRonaldoLondono.pdf', '_blank');
               }}
             >
               <Briefcase className="h-5 w-5" />
