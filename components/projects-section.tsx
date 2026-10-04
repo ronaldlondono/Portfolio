@@ -27,7 +27,7 @@ const projects = [
     image: "presentacion.png",
     tags: ["React", "C#", ".NET", "SQL Server", "Azure", "Tailwind CSS"],
     category: "app",
-    demo: "http://printing-cost.vercel.app",
+    demo: "https://printing-cost-app-git-main-rade-studio-projects.vercel.app/",
   },
   {
     id: 3,
@@ -37,7 +37,16 @@ const projects = [
     tags: ["React", "TypeScript", "Tailwind CSS"],
     category: "web",
     demo: "https://pagina-cultura-mrbqfdwxt-ronaldlondonos-projects.vercel.app/",
-  }
+  },
+  {
+    id: 4,
+    title: "MapaNet BPO",
+    description: "Portal de empleo y ERP a medida para una empresa de BPO. Integra el sitio público comercial, la página de empleo con postulación en línea, un módulo completo de reclutamiento (requisiciones, vacantes, pipeline de candidatos con tablero drag & drop, entrevistas con scorecards y ofertas) y un CRM multi-campaña con embudo de ventas. Desarrollado como desarrollador junior, participando en decisiones de arquitectura y trabajando bajo desarrollo guiado por pruebas (TDD).",
+    image: "mapanetbpo.jpeg",
+    tags: ["Laravel", "PHP", "React", "TypeScript", "Inertia.js", "MySQL", "Docker"],
+    category: "app",
+    demo: "https://mapanetbpo.co",
+  },
 ]
 
 export function ProjectsSection() {
