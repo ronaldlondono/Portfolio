@@ -4,31 +4,44 @@ import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-// Datos de ejemplo para las habilidades
+// Datos de habilidades basados en la hoja de vida
 const skills = {
   frontend: [
-    { name: "TypeScript", experience: "2 años" },
     { name: "React", experience: "2 años" },
-    { name: "Next.js", experience: "1 años" },
+    { name: "Next.js", experience: "2 años" },
+    { name: "TypeScript", experience: "2 años" },
     { name: "Tailwind CSS", experience: "2 años" },
-    { name: "bootstrap", experience: "1 año" },
+    { name: "Bootstrap", experience: "1 año" },
+    { name: "HTML5 / CSS3", experience: "3 años" },
+    { name: "Diseño Responsivo", experience: "2 años" },
+  ],
+  backend: [
+    { name: "Laravel", experience: "1 año" },
+    { name: ".NET (C#)", experience: "1 año" },
+    { name: "Node.js", experience: "1 año" },
+    { name: "APIs REST", experience: "2 años" },
+    { name: "Supabase", experience: "1 año" },
+    { name: "MySQL", experience: "2 años" },
+    { name: "SQL Server", experience: "1 año" },
+    { name: "PostgreSQL", experience: "1 año" },
+  ],
+  languages: [
+    { name: "TypeScript", experience: "2 años" },
+    { name: "JavaScript (ES6+)", experience: "3 años" },
+    { name: "PHP", experience: "1 año" },
+    { name: "Python", experience: "1 año" },
+    { name: "C#", experience: "1 año" },
+    { name: "SQL", experience: "2 años" },
   ],
   tools: [
-    { name: "Git/GitHub", experience: "3 años" },
-    { name: "Webpack", experience: "1 año" },
+    { name: "Docker", experience: "1 año" },
+    { name: "Git / GitHub", experience: "3 años" },
+    { name: "GitHub Actions", experience: "1 año" },
+    { name: "Vercel", experience: "2 años" },
+    { name: "Railway", experience: "1 año" },
+    { name: "Microsoft Azure", experience: "1 año" },
     { name: "Vite", experience: "2 años" },
-    { name: "Figma", experience: "2 años" },
     { name: "VS Code", experience: "4 años" },
-    { name: "Chrome DevTools", experience: "3 años" },
-  ],
-  other: [
-    { name: "Node.js", experience: "1 año" },
-    { name: "Express", experience: "8 meses" },
-    { name: "MongoDB", experience: "6 meses" },
-    { name: "Firebase", experience: "1 año" },
-    { name: "Mysql", experience: "1 año" },
-    { name: "SQLserver", experience: "1 año" },
-    { name: "REST API", experience: "2 años" },
   ],
 }
 
@@ -45,10 +58,11 @@ export function SkillsSection() {
 
         <Tabs defaultValue="frontend" className="w-full">
           <div className="flex justify-center mb-8">
-            <TabsList>
+            <TabsList className="grid grid-cols-2 sm:grid-cols-4 w-full max-w-2xl h-auto p-1 gap-1">
               <TabsTrigger value="frontend">Front-End</TabsTrigger>
-              <TabsTrigger value="tools">Herramientas</TabsTrigger>
-              <TabsTrigger value="other">Otras</TabsTrigger>
+              <TabsTrigger value="backend">Back-End & BD</TabsTrigger>
+              <TabsTrigger value="languages">Lenguajes</TabsTrigger>
+              <TabsTrigger value="tools">Herramientas & Nube</TabsTrigger>
             </TabsList>
           </div>
 
@@ -56,30 +70,34 @@ export function SkillsSection() {
             <SkillsGrid skills={skills.frontend} />
           </TabsContent>
 
-          <TabsContent value="tools">
-            <SkillsGrid skills={skills.tools} />
+          <TabsContent value="backend">
+            <SkillsGrid skills={skills.backend} />
           </TabsContent>
 
-          <TabsContent value="other">
-            <SkillsGrid skills={skills.other} />
+          <TabsContent value="languages">
+            <SkillsGrid skills={skills.languages} />
+          </TabsContent>
+
+          <TabsContent value="tools">
+            <SkillsGrid skills={skills.tools} />
           </TabsContent>
         </Tabs>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
           <ServiceCard
-            title="Desarrollo Web"
-            description="Creación de sitios web modernos, responsivos y optimizados para SEO."
-            icon="🌐"
-          />
-          <ServiceCard
-            title="Aplicaciones SPA"
-            description="Desarrollo de aplicaciones web de una sola página con React y Next.js."
+            title="Desarrollo Web & SPA"
+            description="Creación de interfaces modernas, reactivas y accesibles con React, Next.js y TypeScript."
             icon="⚛️"
           />
           <ServiceCard
-            title="UI/UX Design"
-            description="Diseño de interfaces intuitivas y experiencias de usuario atractivas."
-            icon="🎨"
+            title="Back-End & APIs REST"
+            description="Construcción de servicios robustos, arquitecturas limpias y bases de datos con Laravel, .NET y Node.js."
+            icon="🖥️"
+          />
+          <ServiceCard
+            title="Testing & DevOps"
+            description="Desarrollo guiado por pruebas (TDD), integración continua (CI/CD) y contenedores con Docker en la nube."
+            icon="🚀"
           />
         </div>
       </div>
@@ -87,7 +105,12 @@ export function SkillsSection() {
   )
 }
 
-function SkillsGrid({ skills }) {
+interface Skill {
+  name: string
+  experience: string
+}
+
+function SkillsGrid({ skills }: { skills: Skill[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {skills.map((skill, index) => (
@@ -111,7 +134,13 @@ function SkillsGrid({ skills }) {
   )
 }
 
-function ServiceCard({ title, description, icon }) {
+interface ServiceCardProps {
+  title: string
+  description: string
+  icon: string
+}
+
+function ServiceCard({ title, description, icon }: ServiceCardProps) {
   return (
     <Card className="group hover:border-primary/50 transition-colors">
       <CardHeader>

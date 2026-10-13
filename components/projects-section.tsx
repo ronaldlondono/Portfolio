@@ -18,7 +18,7 @@ const projects = [
     image: "vipe-pos.png?height=400&width=600",
     tags: ["React", "TypeScript", "SupaBase", "Vercel", "Tailwind CSS", "Python"],
     category: "app",
-    demo: "https://vipe-pos.vercel.app",
+    demo: "https://vipepos.radestudio.org",
   },
   {
     id: 2,
