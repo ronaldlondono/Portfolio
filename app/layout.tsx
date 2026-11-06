@@ -6,9 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Portfolio de Desarrollador Front-End",
+  title: "Portfolio de Desarrollador Full-Stack",
   description:
-    "Portfolio profesional de desarrollador front-end especializado en React, TypeScript y diseño de interfaces modernas.",
+    "Portfolio profesional de desarrollador full-stack con experiencia en React, Next.js, TypeScript, Node.js, Laravel y .NET, APIs REST, bases de datos y despliegue en la nube.",
 }
 
 export default function RootLayout({

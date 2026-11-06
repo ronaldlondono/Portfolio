@@ -1,38 +1,55 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Github, ExternalLink } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Github, ExternalLink } from "lucide-react";
 
 // Datos de ejemplo para los proyectos
 const projects = [
   {
     id: 1,
     title: "Vipe POS",
-    description: "Un sistema completo de punto de venta (POS) para restaurantes, diseñado para optimizar las operaciones diarias desde la toma de órdenes hasta la gestión administrativa. Esta aplicación web proporciona interfaces específicas para meseros, cocina, cajeros y administradores, con funcionalidades adaptadas a cada rol.",
+    description:
+      "Un sistema completo de punto de venta (POS) para restaurantes, diseñado para optimizar las operaciones diarias desde la toma de órdenes hasta la gestión administrativa. Esta aplicación web proporciona interfaces específicas para meseros, cocina, cajeros y administradores, con funcionalidades adaptadas a cada rol.",
     image: "vipe-pos.png?height=400&width=600",
-    tags: ["React", "TypeScript", "SupaBase", "Vercel", "Tailwind CSS", "Python"],
+    tags: [
+      "React",
+      "TypeScript",
+      "SupaBase",
+      "Vercel",
+      "Tailwind CSS",
+      "Python",
+    ],
     category: "app",
     demo: "https://vipepos.radestudio.org",
   },
   {
     id: 2,
     title: "PrintCost Pro",
-    description: "Esta plataforma centraliza la gestión de clientes, ventas, impresiones 3D, inventario, finanzas y estadísticas en un solo sistema automatizado y visual",
+    description:
+      "Esta plataforma centraliza la gestión de clientes, ventas, impresiones 3D, inventario, finanzas y estadísticas en un solo sistema automatizado y visual",
     image: "presentacion.png",
     tags: ["React", "C#", ".NET", "SQL Server", "Azure", "Tailwind CSS"],
     category: "app",
-    demo: "https://printing-cost-app-git-main-rade-studio-projects.vercel.app/",
+    demo: "https://3dprintcost.radestudio.org",
   },
   {
     id: 3,
     title: "Magic Culture",
-    description: "Pagina web sobre la cultura de un municipio, con información sobre historia, tradiciones, eventos y noticias culturales. La página fue diseñado como un proyecto universitaria para representar la identidad cultural del municipio.",
+    description:
+      "Pagina web sobre la cultura de un municipio, con información sobre historia, tradiciones, eventos y noticias culturales. La página fue diseñado como un proyecto universitaria para representar la identidad cultural del municipio.",
     image: "magicculture.png",
     tags: ["React", "TypeScript", "Tailwind CSS"],
     category: "web",
@@ -41,18 +58,47 @@ const projects = [
   {
     id: 4,
     title: "MapaNet BPO",
-    description: "Portal de empleo y ERP a medida para una empresa de BPO. Integra el sitio público comercial, la página de empleo con postulación en línea, un módulo completo de reclutamiento (requisiciones, vacantes, pipeline de candidatos con tablero drag & drop, entrevistas con scorecards y ofertas) y un CRM multi-campaña con embudo de ventas. Desarrollado como desarrollador junior, participando en decisiones de arquitectura y trabajando bajo desarrollo guiado por pruebas (TDD).",
+    description:
+      "Portal de empleo y ERP a medida para una empresa de BPO. Integra el sitio público comercial, la página de empleo con postulación en línea, un módulo completo de reclutamiento (requisiciones, vacantes, pipeline de candidatos con tablero drag & drop, entrevistas con scorecards y ofertas) y un CRM multi-campaña con embudo de ventas. Desarrollado como desarrollador junior, participando en decisiones de arquitectura y trabajando bajo desarrollo guiado por pruebas (TDD).",
     image: "mapanetbpo.jpeg",
-    tags: ["Laravel", "PHP", "React", "TypeScript", "Inertia.js", "MySQL", "Docker"],
+    tags: [
+      "Laravel",
+      "PHP",
+      "React",
+      "TypeScript",
+      "Inertia.js",
+      "MySQL",
+      "Docker",
+    ],
     category: "app",
     demo: "https://mapanetbpo.co",
   },
-]
+  {
+    id: 5,
+    title: "Rade Studio",
+    description:
+      "Sitio web corporativo de Rade Studio, empresa de desarrollo de software. Construido con Astro y renderizado en servidor sobre Node.js, es bilingüe (español e inglés), incluye un recorrido interactivo por el portafolio de clientes y un formulario de contacto con API propia que envía correos mediante Resend. Se despliega en contenedores Docker con CI/CD en GitHub Actions y Coolify sobre un VPS.",
+    image: "radestudio.png",
+    tags: [
+      "Astro",
+      "TypeScript",
+      "Node.js",
+      "Resend",
+      "Docker",
+      "GitHub Actions",
+    ],
+    category: "web",
+    demo: "https://radestudio.org",
+  },
+];
 
 export function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState("all")
+  const [activeTab, setActiveTab] = useState("all");
 
-  const filteredProjects = activeTab === "all" ? projects : projects.filter((project) => project.category === activeTab)
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeTab);
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
@@ -60,11 +106,16 @@ export function ProjectsSection() {
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold">Mis Proyectos</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Una selección de mis trabajos recientes en desarrollo web, aplicaciones y diseño de interfaces.
+            Una selección de mis trabajos recientes en desarrollo web,
+            aplicaciones y diseño de interfaces.
           </p>
         </div>
 
-        <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
+        <Tabs
+          defaultValue="all"
+          className="w-full"
+          onValueChange={setActiveTab}
+        >
           <div className="flex justify-center mb-8">
             <TabsList>
               <TabsTrigger value="all">Todos</TabsTrigger>
@@ -142,5 +193,5 @@ export function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -9,7 +9,7 @@ import { ArrowDown, Briefcase, Mail } from "lucide-react"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
-  const fullText = "Desarrollador Front-End"
+  const fullText = "Desarrollador Full-Stack"
   const typingSpeed = 150
 
   useEffect(() => {
@@ -78,8 +78,8 @@ export function HeroSection() {
           </div>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-md mx-auto md:mx-0">
-            Creo experiencias web modernas, atractivas y de alto rendimiento utilizando las últimas tecnologías
-            front-end.
+            Construyo aplicaciones web completas: desde interfaces modernas y de alto rendimiento hasta APIs, bases de
+            datos y despliegues en la nube.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2 md:pt-4">
