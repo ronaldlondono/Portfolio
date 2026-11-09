@@ -90,6 +90,22 @@ const projects = [
     category: "web",
     demo: "https://radestudio.org",
   },
+  {
+    id: 6,
+    title: "Vision",
+    description:
+      "Plataforma web interna de la Corporación Universitaria Americana que centraliza en un solo lugar los casos de atención, las solicitudes y las tareas de los equipos: atención por WhatsApp, correo y otros canales, remisiones entre áreas, tableros por equipo e indicadores de gestión. Construida sobre Supabase con seguridad a nivel de fila, autenticación con doble factor y permisos para 12 roles, desarrollada con TDD.",
+    image: "vision.jpg",
+    tags: [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    category: "app",
+  },
 ];
 
 export function ProjectsSection() {
@@ -158,19 +174,21 @@ export function ProjectsSection() {
                         ))}
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-between">
-                      <Button size="sm" asChild>
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Ver
-                        </a>
-                      </Button>
-                    </CardFooter>
+                    {project.demo && (
+                      <CardFooter className="flex justify-between">
+                        <Button size="sm" asChild>
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            Ver
+                          </a>
+                        </Button>
+                      </CardFooter>
+                    )}
                   </Card>
                 </motion.div>
               ))}
