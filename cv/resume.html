@@ -1,0 +1,128 @@
+<!doctype html>
+<!--
+  Editable source of public/Resume_LuisRonaldoLondono.pdf (English version of cv/hoja-de-vida.html).
+  Keep both versions in sync when the content changes.
+  Regenerate the PDF (Letter, Arial) with headless Chromium:
+    chrome --headless --no-pdf-header-footer --print-to-pdf=public/Resume_LuisRonaldoLondono.pdf cv/resume.html
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Resume — Luis Ronaldo Londoño Gómez</title>
+<style>
+  @font-face { font-family: "CV Arial"; font-weight: 400; font-style: normal; src: local("Arial"), local("ArialMT"), url("file:///mnt/c/Windows/Fonts/arial.ttf"); }
+  @font-face { font-family: "CV Arial"; font-weight: 700; font-style: normal; src: local("Arial Bold"), local("Arial-BoldMT"), url("file:///mnt/c/Windows/Fonts/arialbd.ttf"); }
+  @font-face { font-family: "CV Arial"; font-weight: 400; font-style: italic; src: local("Arial Italic"), local("Arial-ItalicMT"), url("file:///mnt/c/Windows/Fonts/ariali.ttf"); }
+
+  @page { size: Letter; margin: 36pt; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "CV Arial", Arial, "Liberation Sans", sans-serif; font-size: 10pt; line-height: 1.13; color: #404040; }
+  a { color: #1f4e79; text-decoration: underline; text-decoration-thickness: 0.7pt; text-underline-offset: 1.5pt; }
+  strong { color: #1a1a1a; }
+
+  h1 { font-size: 19pt; color: #1a1a1a; line-height: 1.15; }
+  .headline { font-size: 11.5pt; color: #1f4e79; margin-top: 1pt; }
+  .contact { font-size: 9.5pt; margin-top: 3pt; }
+  .contact + .contact { margin-top: 0; }
+  .sep { color: #bfbfbf; padding: 0 3pt; }
+
+  h2 { font-size: 11.5pt; color: #1f4e79; border-bottom: 0.75pt solid #1f4e79; margin: 6pt -1.4pt 4pt; padding: 1.5pt 1.4pt 1.5pt; break-after: avoid; }
+
+  .summary { text-align: justify; }
+  .entry + .entry { margin-top: 5pt; }
+  .entry-head { font-size: 10.5pt; break-after: avoid; }
+  .entry-head em { color: #404040; margin-left: 6pt; }
+  .entry-sub { font-size: 9.5pt; font-style: italic; break-after: avoid; }
+
+  ul { list-style: none; }
+  li { position: relative; padding-left: 16pt; margin-top: 2pt; break-inside: avoid; }
+  li::before { content: "•"; position: absolute; left: 6pt; }
+  .entry-head + ul li:first-child, .entry-sub + ul li:first-child { margin-top: 1.5pt; }
+
+  .meta { margin-top: 2pt; break-inside: avoid; }
+  .links { font-size: 10pt; margin-top: 2.5pt; }
+  .links a { color: #1f4e79; }
+  .skills p + p { margin-top: 2pt; }
+  .degree + .entry-sub { margin-top: 1pt; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Luis Ronaldo Londoño Gómez</h1>
+  <p class="headline">Full-Stack Developer | React · TypeScript · Laravel · .NET</p>
+  <p class="contact">Barranquilla, Colombia<span class="sep">|</span>+57 300 480 7418<span class="sep">|</span>ronaldlondono20@gmail.com</p>
+  <p class="contact"><a href="https://www.linkedin.com/in/luis-ronaldo-londoño-gómez-53561a272/">linkedin.com/in/luis-ronaldo-londoño-gómez</a><span class="sep">|</span><a href="https://github.com/ronaldlondono">github.com/ronaldlondono</a><span class="sep">|</span><a href="https://ronaldlondono.github.io/Portfolio/">ronaldlondono.github.io/Portfolio</a></p>
+</header>
+
+<section>
+  <h2>PROFESSIONAL SUMMARY</h2>
+  <p class="summary">Full-stack developer building web applications with React and TypeScript on top of Laravel, Supabase, and .NET. Works test-first (TDD) with continuous integration and pull-request code review. Built Vision, an internal case-management platform for Corporación Universitaria Americana, now in pilot, plus two systems in use by real businesses.</p>
+</section>
+
+<section>
+  <h2>EXPERIENCE</h2>
+
+  <div class="entry">
+    <p class="entry-head"><strong>Corporación Universitaria Americana</strong><em>Nov 2025 – Present</em></p>
+    <p class="entry-sub">Course Content &amp; Internal Tools Development — Contractor, private university</p>
+    <ul>
+      <li>Built Vision, an internal web app that centralizes the cases, requests, and tasks of the university's teams, with cross-department referrals, per-team boards, and performance metrics; now in pilot with one team.</li>
+      <li>Developed Vision with React, TypeScript, and Tailwind CSS on Supabase (PostgreSQL with row-level security, Edge Functions, and two-factor authentication), with permissions for 12 roles, deployed on Vercel.</li>
+      <li>Applied TDD: 2,500+ unit tests with Vitest and database tests with pgTAP.</li>
+      <li>Manage student course content on the university's learning platform; automated its upload with n8n workflows.</li>
+    </ul>
+    <p class="meta"><strong>Technologies:</strong> n8n, React, TypeScript, Vite, Tailwind CSS, Supabase, PostgreSQL, Vitest, pgTAP, Vercel</p>
+  </div>
+
+  <div class="entry">
+    <p class="entry-head"><strong>MapaNet BPO</strong><em>Apr 2026 – Oct 2026</em></p>
+    <p class="entry-sub">Junior Developer — Custom ERP with a public job portal (<a href="https://mapanetbpo.co">mapanetbpo.co</a>)</p>
+    <ul>
+      <li>Part of the team that built a custom ERP with a public job portal: a Laravel monolith with a React and TypeScript front end over Inertia, deployed on Railway.</li>
+      <li>Developed features for the recruiting module (ATS): requisitions, job openings, a drag-and-drop candidate pipeline board, interviews with scorecards, offers, and the public careers page.</li>
+      <li>Took part in architecture decisions: domain modules (Recruiting, CRM, Settings), granular roles and permissions, and versioned form schemas with formula-calculated fields.</li>
+      <li>Wrote tests before the implementation (TDD) with Pest on the back end and Vitest with Testing Library on the front end; the project maintains 2,800+ tests passing on GitHub Actions.</li>
+    </ul>
+    <p class="meta"><strong>Technologies:</strong> PHP, Laravel, React, TypeScript, Inertia.js, MySQL, Redis, Docker, Pest, Vitest, GitHub Actions, Railway</p>
+  </div>
+</section>
+
+<section class="skills">
+  <h2>TECHNICAL SKILLS</h2>
+  <p><strong>Languages:</strong> TypeScript, JavaScript (ES6+), PHP, Python, C#, SQL</p>
+  <p><strong>Front End:</strong> React, Tailwind CSS, Bootstrap, HTML5, CSS3, Responsive Design</p>
+  <p><strong>Back End &amp; Databases:</strong> Laravel, Node.js, .NET, Supabase, MySQL, SQL Server, PostgreSQL</p>
+  <p><strong>Cloud &amp; Tools:</strong> Vercel, Railway, Microsoft Azure, Docker, Git, GitHub, GitHub Actions, n8n</p>
+  <p><strong>Focus Areas:</strong> REST APIs, Single-Page Applications, TDD, Database Modeling, Continuous Integration</p>
+</section>
+
+<section>
+  <h2>SELECTED PROJECTS</h2>
+
+  <div class="entry">
+    <p class="entry-head"><strong>Vipe POS — Restaurant Point-of-Sale System</strong><em>Full-Stack Developer</em></p>
+    <ul>
+      <li>Built a point-of-sale (POS) web app, now in use at a restaurant, from order taking to back-office management.</li>
+      <li>Designed role-specific interfaces (waiters, kitchen, cashiers, and administrators), each tailored to its workflow.</li>
+    </ul>
+    <p class="meta"><strong>Technologies:</strong> React, TypeScript, Supabase, Python, Tailwind CSS, Vercel<span class="sep">|</span><strong>Demo:</strong> <a href="https://vipepos.radestudio.org/">vipepos.radestudio.org</a></p>
+  </div>
+
+  <div class="entry">
+    <p class="entry-head"><strong>PrintCost Pro — Business Management Platform</strong><em>Full-Stack Developer</em></p>
+    <ul>
+      <li>Built a platform used by a 3D-printing business to manage clients, sales, print jobs, inventory, and finances.</li>
+      <li>Developed the React interface, connected to a C# / .NET back end with SQL Server on Azure, and automated cost calculation and report generation.</li>
+    </ul>
+    <p class="meta"><strong>Technologies:</strong> React, C#, .NET, SQL Server, Azure, Tailwind CSS<span class="sep">|</span><strong>Demo:</strong> <a href="https://3dprintcost.radestudio.org/">3dprintcost.radestudio.org</a></p>
+  </div>
+</section>
+
+<section>
+  <h2>EDUCATION &amp; LANGUAGES</h2>
+  <p><strong>Bachelor's in Systems Engineering</strong> (in progress) — Corporación Universitaria Americana, Barranquilla<span class="sep">|</span>2021 – Present</p>
+  <p class="meta"><strong>Spanish:</strong> Native &nbsp; &nbsp; &nbsp; <strong>English:</strong> B1 (Intermediate)</p>
+</section>
+</body>
+</html>

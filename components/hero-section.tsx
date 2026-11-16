@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
-import { ArrowDown, Briefcase, Mail } from "lucide-react"
+import { ArrowDown, Briefcase, Download, Mail } from "lucide-react"
 
 export function HeroSection() {
   const [typedText, setTypedText] = useState("")
@@ -114,8 +114,19 @@ export function HeroSection() {
                 window.open('HojaDeVida_LuisRonaldoLondono.pdf', '_blank');
               }}
             >
-              <Briefcase className="h-5 w-5" />
+              <Download className="h-5 w-5" />
               Descargar CV
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2 bg-transparent"
+              onClick={() => {
+                window.open('Resume_LuisRonaldoLondono.pdf', '_blank');
+              }}
+            >
+              <Download className="h-5 w-5" />
+              CV en inglés
             </Button>
           </div>
         </motion.div>
