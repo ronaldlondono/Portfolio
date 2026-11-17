@@ -1,0 +1,420 @@
+/*
+ * Hero + projects + glass layer stack ("Capas de cristal").
+ * Holds what Tailwind cannot express well: the stage modes, the 3D planes, the
+ * light-line SVG and the layer rows. Colours come from the globals.css tokens.
+ *
+ * Modes
+ * - static (default, no JS, reduced motion): rig beside the hero, separated,
+ *   labelled and wired with the general stack; projects show text + screenshot.
+ * - live (`.js`, > 900px, motion allowed): the rig spans hero + projects and is
+ *   pinned; useLayerStack drives it. The CSS below sets the scroll-0 state so the
+ *   first paint already matches what the hook will write.
+ * - narrow (<= 900px): one column, a small decorative stack after the hero.
+ * The live media query must match LIVE_QUERY in hooks/use-layer-stack.ts.
+ */
+
+/* ---------- Stage ---------- */
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(24px, 4vw, 64px);
+  padding: 0 var(--pad);
+}
+
+.hero {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rig {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.projects {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.liveOnly {
+  display: none;
+}
+
+/* ---------- Rig ---------- */
+
+.rigIn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: min(780px, calc(100svh - var(--hh) - 24px));
+  margin-top: calc(var(--hh) + 12px);
+}
+
+.v3d {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 720×760 design space, fitted to .v3d by the hook (fallback scale below). */
+.scene {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 720px;
+  height: 760px;
+  transform-origin: 0 0;
+  transform: scale(0.82);
+}
+
+.layer {
+  position: absolute;
+  left: 110px;
+  width: 280px;
+  height: 280px;
+  will-change: transform;
+}
+.layer[data-stack-layer="0"] {
+  top: 10px;
+}
+.layer[data-stack-layer="1"] {
+  top: 160px;
+}
+.layer[data-stack-layer="2"] {
+  top: 310px;
+}
+.layer[data-stack-layer="3"] {
+  top: 460px;
+}
+
+.plane {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  transform: perspective(1800px) rotateX(60deg) rotateZ(-45deg);
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.03) 55%, rgba(var(--rgb), 0.1)),
+    linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.055) 1px, transparent 1px) 0 0 / 28px 28px,
+    rgba(var(--rgb), 0.1);
+  border: 1px solid rgb(255 255 255 / 0.22);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    inset 0 0 0 1px rgba(var(--rgb), 0.1),
+    0 40px 60px -30px rgb(0 0 0 / 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Lit state: tinted fill + solid edge, faded in with opacity only. */
+.plane::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1.5px solid rgba(var(--rgb), 0.95);
+  background: rgba(var(--rgb), 0.2);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.22);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+.layer[data-lit] .plane::after {
+  opacity: 1;
+}
+
+.engr {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  font: 500 15px/1 var(--font-mono);
+  letter-spacing: 0.02em;
+  color: rgb(var(--c-ink) / 0.55);
+}
+
+.tag {
+  position: absolute;
+  left: 352px;
+  top: 112px;
+  width: 252px;
+  padding: 8px 12px 9px;
+  border-radius: 8px;
+  background: rgb(var(--c-base) / 0.72);
+  border: 1px solid var(--line);
+}
+.tag::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: rgba(var(--rgb), 0.8);
+}
+.layer[data-lit] .tag {
+  border-color: rgba(var(--rgb), 0.75);
+  background: rgb(var(--c-base) / 0.86);
+}
+
+.tk {
+  display: block;
+  font: 500 13px/1.4 var(--font-mono);
+  color: rgb(var(--rgb));
+}
+
+/* Remounted (React key) on every relabel; data-swap replays the fade (not on first paint). */
+.tv {
+  display: block;
+  margin-top: 2px;
+  font: 600 15.5px/1.35 var(--font-sans);
+  color: rgb(var(--c-ink));
+}
+.tv[data-swap] {
+  animation: swap 0.42s var(--ease);
+}
+.tv[data-empty] {
+  color: rgb(var(--c-ink-faint));
+  font-weight: 400;
+}
+@keyframes swap {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Light line between the planes. */
+.seg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 720px;
+  height: 760px;
+  overflow: visible;
+  pointer-events: none;
+}
+.wire {
+  fill: none;
+  stroke: rgb(var(--c-ink) / 0.8);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 0;
+}
+.pulse {
+  fill: none;
+  stroke: rgb(var(--c-sun));
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 8 200;
+  stroke-dashoffset: 8;
+  opacity: 0;
+}
+.port {
+  fill: rgb(var(--c-base) / 0.5);
+  stroke: rgb(var(--c-ink) / 0.85);
+  stroke-width: 1.4;
+}
+
+/* Screenshot that drops onto the Interfaz plane (live mode only). */
+.shots {
+  display: none;
+}
+.shot3d {
+  position: absolute;
+  left: 145px;
+  top: 78px;
+  width: 210px;
+  height: 132px;
+  border-radius: 6px;
+  overflow: hidden;
+  transform: perspective(1800px) rotateX(60deg) rotateZ(-45deg);
+  background: #161b23;
+  border: 1px solid rgb(var(--c-ink) / 0.4);
+  box-shadow: 0 24px 30px -18px rgb(0 0 0 / 0.7);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.shot3d img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+/* ---------- Project layer rows ---------- */
+
+.rows {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  max-width: 36em;
+}
+.row {
+  position: relative;
+  padding: 12px 0 12px 18px;
+  border-top: 1px solid var(--line);
+}
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(var(--rgb), 0.35);
+  transition: background-color 0.3s var(--ease);
+}
+.row[data-lit]::before {
+  background: rgb(var(--rgb));
+}
+.rowKey {
+  font: 500 13.5px/1.5 var(--font-mono);
+  color: rgb(var(--rgb));
+}
+.rowNote {
+  margin: 4px 0 0;
+  color: rgb(var(--c-ink-muted));
+  font-size: 16px;
+  transition: color 0.3s var(--ease);
+}
+.row[data-lit] .rowNote {
+  color: rgb(var(--c-ink));
+}
+
+/* ---------- Project article ---------- */
+
+.project {
+  margin-top: 40px;
+  padding: 56px 0 32px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: 48px;
+}
+.project > * {
+  grid-column: 1;
+}
+.project > .shot {
+  grid-column: 2;
+  grid-row: 1 / span 6;
+  align-self: start;
+}
+
+/* ---------- Without backdrop-filter: more opaque fills ---------- */
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .plane {
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.1), rgba(var(--rgb), 0.1)), rgb(26 31 40 / 0.9);
+  }
+  .tag {
+    background: rgb(var(--c-base) / 0.92);
+  }
+}
+
+/* ---------- Live: pinned rig spanning hero + projects ---------- */
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  :global(.js) .rig {
+    grid-row: 1 / span 2;
+  }
+  :global(.js) .projects {
+    grid-column: 1;
+  }
+  :global(.js) .liveOnly {
+    display: inline;
+  }
+  :global(.js) .rigIn {
+    position: sticky;
+    top: calc(var(--hh) + 12px);
+    height: calc(100vh - var(--hh) - 24px);
+    height: calc(100svh - var(--hh) - 24px);
+  }
+  :global(.js) .project {
+    display: block;
+    min-height: 118vh;
+    padding: 14vh 0 10vh;
+  }
+  :global(.js) .project > .shot {
+    display: none;
+  }
+  :global(.js) .row {
+    margin-top: 4.5vh;
+  }
+  :global(.js) .shots {
+    display: block;
+  }
+
+  /* Scroll-0 state (rested stack), written again by the hook every frame. */
+  :global(.js) .layer[data-stack-layer="0"] {
+    transform: translate3d(0, 201px, 0);
+  }
+  :global(.js) .layer[data-stack-layer="1"] {
+    transform: translate3d(0, 67px, 0);
+  }
+  :global(.js) .layer[data-stack-layer="2"] {
+    transform: translate3d(0, -67px, 0);
+  }
+  :global(.js) .layer[data-stack-layer="3"] {
+    transform: translate3d(0, -201px, 0);
+  }
+  :global(.js) .tag,
+  :global(.js) .layer:not([data-stack-layer="0"]) .engr,
+  :global(.js) .port {
+    opacity: 0;
+  }
+  :global(.js) .wire {
+    stroke-dashoffset: 100;
+  }
+}
+
+/* ---------- Narrow: single column, decorative stack without labels ---------- */
+
+@media (max-width: 900px) {
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rig {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .projects {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .rigIn {
+    height: 340px;
+    margin-top: 16px;
+  }
+  .scene {
+    transform: scale(0.44);
+  }
+  .tag {
+    display: none;
+  }
+  .project {
+    display: block;
+    padding: 40px 0 16px;
+  }
+  .project > .shot {
+    margin-top: 22px;
+  }
+}
+
+/* ---------- Reduced motion: final states, no fades ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .plane::after,
+  .row::before,
+  .rowNote {
+    transition: none;
+  }
+  .tv {
+    animation: none;
+  }
+}
