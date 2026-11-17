@@ -6,10 +6,10 @@ import styles from "./showcase.module.css"
 
 /** Image sizes of the real screenshots in public/ (width/height attributes). */
 const SHOT_SIZE: Record<string, [number, number]> = {
-  "vipe-pos.png": [1024, 654],
-  "presentacion.png": [996, 728],
-  "mapanetbpo.jpeg": [1536, 1024],
-  "radestudio.png": [1200, 630],
+  "vipe-pos-screen.png": [1440, 900],
+  "printcost-screen.png": [1440, 900],
+  "mapanetbpo-screen.png": [1440, 900],
+  "radestudio-screen.png": [1440, 900],
   "vision.jpg": [1200, 705],
   "magicculture.png": [1744, 902],
 }

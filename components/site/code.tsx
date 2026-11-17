@@ -32,7 +32,7 @@ function MetaValueView({ value }: { value: MetaValue }) {
       )
     case "link":
       return value.external ? (
-        <a href={value.href} target="_blank" rel="noopener">
+        <a href={value.href} target="_blank" rel="noopener noreferrer">
           {value.label}
           <span className="sr-only">{NEW_TAB_SR}</span>
         </a>

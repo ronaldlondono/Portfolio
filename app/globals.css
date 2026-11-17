@@ -204,6 +204,7 @@
     align-items: center;
     min-height: 32px;
     color: rgb(var(--c-ink));
+    text-decoration-line: underline;
     text-decoration-color: var(--line-strong);
     text-underline-offset: 4px;
   }

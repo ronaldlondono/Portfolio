@@ -266,8 +266,8 @@ export const projects: Project[] = [
       host: "vipepos.radestudio.org",
       cta: "Abrir la demo de Vipe POS",
     },
-    asset: "vipe-pos.png",
-    assetAlt: "Captura de Vipe POS: categorías, productos y comanda",
+    asset: "vipe-pos-screen.png",
+    assetAlt: "Página de inicio de Vipe POS: «Tu restaurante, por fin en sincronía» y la vista del salón por mesas",
     mood: 1,
     accent: "#F2C14E",
     layers: {
@@ -294,8 +294,8 @@ export const projects: Project[] = [
       host: "3dprintcost.radestudio.org",
       cta: "Abrir la demo de PrintCost Pro",
     },
-    asset: "presentacion.png",
-    assetAlt: "Captura de PrintCost Pro: menú lateral y tabla de gestión",
+    asset: "printcost-screen.png",
+    assetAlt: "Página de inicio de 3D Print Cost: «Cada capa tiene un precio» y la calculadora de costo por pieza",
     mood: 2,
     accent: "#2BB3A8",
     layers: {
@@ -323,8 +323,8 @@ export const projects: Project[] = [
       host: "mapanetbpo.co",
       cta: "Abrir mapanetbpo.co",
     },
-    asset: "mapanetbpo.jpeg",
-    assetAlt: "Captura de MapaNet BPO: pipeline de candidatos por etapas",
+    asset: "mapanetbpo-screen.png",
+    assetAlt: "Página de inicio de MapaNet BPO: «Desde Barranquilla hacia el mundo»",
     mood: 3,
     accent: "#F07A5F",
     layers: {
@@ -357,8 +357,8 @@ export const projects: Project[] = [
       host: "radestudio.org",
       cta: "Abrir radestudio.org",
     },
-    asset: "radestudio.png",
-    assetAlt: "Captura de Rade Studio: navegación, portada y recorrido de portafolio",
+    asset: "radestudio-screen.png",
+    assetAlt: "Página de inicio de Rade Studio: «Software que trabaja como tu negocio»",
     mood: 4,
     accent: "#F2C14E",
     layers: {
@@ -383,7 +383,7 @@ export const projects: Project[] = [
       note: "Uso interno · sin demo pública",
     },
     asset: "vision.jpg",
-    assetAlt: "Captura de Vision: menú lateral, indicadores y tableros por equipo",
+    assetAlt: "Captura de Vision: menú lateral y panel de indicadores del equipo de Atención al Cliente",
     mood: 5,
     accent: "#72D7CC",
     layers: {
@@ -409,7 +409,7 @@ export const projects: Project[] = [
       note: "Proyecto académico · sin demo publicada",
     },
     asset: "magicculture.png",
-    assetAlt: "Captura de Magic Culture: portada, texto y tarjetas de eventos",
+    assetAlt: "Imagen de presentación de Magic Culture, centro cultural",
     mood: 6,
     accent: "#F07A5F",
     layers: {
