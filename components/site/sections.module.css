@@ -1,0 +1,160 @@
+/*
+ * Full-width glass sections (experiencia, stack, contacto).
+ * Only what Tailwind utilities cannot express cleanly lives here: generated
+ * content, display: contents rows, sibling borders and the scroll reveal.
+ * Colours come from the palette variables in app/globals.css.
+ */
+
+/* ---------- Experiencia ---------- */
+
+.highlights {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgb(var(--c-ink-muted));
+}
+.highlights li {
+  position: relative;
+  margin-top: 6px;
+  padding-left: 20px;
+}
+.highlights li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: rgb(var(--c-ink-faint));
+  font-family: var(--font-mono);
+}
+
+/*
+ * Scroll reveal. Only active once the client sets data-reveal on the list, and
+ * only when motion is allowed, so without JS or with reduced motion every entry
+ * is simply visible. Transform and opacity only.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .revealList[data-reveal] > li {
+    transition:
+      opacity 0.7s var(--ease),
+      transform 0.7s var(--ease);
+  }
+  .revealList[data-reveal] > li:nth-child(2) {
+    transition-delay: 90ms;
+  }
+  .revealList[data-reveal] > li:not([data-in]) {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+}
+
+/* ---------- Stack ---------- */
+
+.stackCode {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 28px;
+}
+.stackCode > div {
+  display: contents;
+}
+.stackCode dt {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  font: 500 14px/1.5 var(--font-mono);
+  color: rgb(var(--c-teal-text));
+}
+.stackCode dt span {
+  color: rgb(var(--c-ink-faint));
+}
+.stackCode dd {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  font-size: 18px;
+  font-weight: 550;
+  line-height: 1.45;
+  min-width: 0;
+}
+.stackCode > div:first-child dt,
+.stackCode > div:first-child dd {
+  border-top: 0;
+}
+.sep {
+  color: rgb(var(--c-ink-faint));
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* ---------- Contacto ---------- */
+
+.mail {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 0;
+  border-bottom: 2px solid rgb(var(--c-sun));
+  font: 650 clamp(22px, 2.6vw, 38px)/1.2 var(--font-display);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  /* Prefer the <wbr> before "@"; only split inside a word as a last resort. */
+  overflow-wrap: break-word;
+  transition: color 0.2s var(--ease);
+}
+.mail:hover {
+  color: rgb(var(--c-sun));
+}
+
+.channels {
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.channels a {
+  display: grid;
+  grid-template-columns: 9em minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  min-height: 56px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+.channelKey {
+  font: 500 13.5px var(--font-mono);
+  color: rgb(var(--c-teal-text));
+}
+.channelValue {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  transition: color 0.2s var(--ease);
+}
+.channels a:hover .channelValue {
+  color: rgb(var(--c-sun));
+}
+.channelGo {
+  font: 400 13px var(--font-mono);
+  color: rgb(var(--c-ink-faint));
+}
+
+/* ---------- Narrow screens: one column ---------- */
+
+@media (max-width: 900px) {
+  .stackCode {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stackCode dt {
+    padding: 12px 0 0;
+  }
+  .stackCode dd {
+    padding: 2px 0 12px;
+    border-top: 0;
+    font-size: 17px;
+  }
+  .channels a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 12px;
+    padding: 8px 0;
+  }
+  .channelKey {
+    grid-column: 1 / -1;
+  }
+}
