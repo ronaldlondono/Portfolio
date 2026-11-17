@@ -1,27 +1,30 @@
 import type React from "react"
+import type { Metadata, Viewport } from "next"
 import "@/app/globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { profile } from "@/lib/portfolio-content"
 
-const inter = Inter({ subsets: ["latin"] })
-
-export const metadata = {
-  title: "Portfolio de Desarrollador Full-Stack",
-  description:
-    "Portfolio profesional de desarrollador full-stack con experiencia en React, Next.js, TypeScript, Node.js, Laravel y .NET, APIs REST, bases de datos y despliegue en la nube.",
+export const metadata: Metadata = {
+  title: `${profile.fullName} — ${profile.role}`,
+  description: profile.metaDescription,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: "#0E1116",
+  colorScheme: "dark",
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
+    // The inline script adds `js` before paint so no-JS fallbacks (wrapped nav) only apply without JS.
     <html lang="es" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body>
+        <a className="skip-link" href="#contenido">
+          Saltar al contenido
+        </a>
+        {children}
       </body>
     </html>
   )

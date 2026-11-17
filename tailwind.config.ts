@@ -19,7 +19,39 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
+        mono: ["var(--font-mono)"],
+      },
       colors: {
+        /* Capas de cristal palette (see app/globals.css). Opacity modifiers work: bg-base/60. */
+        base: "rgb(var(--c-base) / <alpha-value>)",
+        ink: {
+          DEFAULT: "rgb(var(--c-ink) / <alpha-value>)",
+          muted: "rgb(var(--c-ink-muted) / <alpha-value>)",
+          faint: "rgb(var(--c-ink-faint) / <alpha-value>)",
+        },
+        teal: {
+          DEFAULT: "rgb(var(--c-teal) / <alpha-value>)",
+          text: "rgb(var(--c-teal-text) / <alpha-value>)",
+          deep: "rgb(var(--c-deep) / <alpha-value>)",
+        },
+        sun: {
+          DEFAULT: "rgb(var(--c-sun) / <alpha-value>)",
+          hover: "rgb(var(--c-sun-hover) / <alpha-value>)",
+          ink: "rgb(var(--c-sun-ink) / <alpha-value>)",
+        },
+        coral: {
+          DEFAULT: "rgb(var(--c-coral) / <alpha-value>)",
+          text: "rgb(var(--c-coral-text) / <alpha-value>)",
+        },
+        steel: "rgb(var(--c-steel) / <alpha-value>)",
+        pane: "rgb(var(--c-pane) / <alpha-value>)",
+        line: {
+          DEFAULT: "var(--line)",
+          strong: "var(--line-strong)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -53,6 +85,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      spacing: {
+        hh: "var(--hh)",
+        pad: "var(--pad)",
+      },
+      transitionTimingFunction: {
+        glass: "var(--ease)",
       },
       borderRadius: {
         lg: "var(--radius)",
